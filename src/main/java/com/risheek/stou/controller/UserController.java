@@ -29,6 +29,12 @@ public class UserController {
 		return userService.createUser(user);
 	}
 	
+	@PostMapping("/authenticate")
+	public boolean authenticateUser(@RequestBody User user) {
+		System.out.println("User: " + user);
+		return userService.authenticateUser(user);
+	}
+	
 	@GetMapping("/{email}/{role}")
 	public User getUserByEmailAndRole(@PathVariable String email, @PathVariable Integer role) {
 		return userService.getUser(email, role);
