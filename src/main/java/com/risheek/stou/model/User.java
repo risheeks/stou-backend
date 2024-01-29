@@ -8,7 +8,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.risheek.stou.compositeKey.UserKey;
 
@@ -20,8 +19,6 @@ import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "user")
@@ -59,6 +56,13 @@ public class User {
 	public User() {
 		super();
 	}
+	
+	public User(String email, Role role, String password) {
+		this.email = email;
+		this.role = role;
+		this.password = password;
+	}
+	
 	public User(String email, Role role, String picture, String firstName, String lastName, String password,
 			int location, double rating, int numRatings, String aboutMe, boolean banned, int numViews,
 			Timestamp created, Timestamp updated) {
