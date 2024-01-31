@@ -27,5 +27,9 @@ public class UserKey implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	@Override
+	public String toString() {
+		return "UserKey [email=" + email + ", role=" + role + "]";
+	}
 	
 }

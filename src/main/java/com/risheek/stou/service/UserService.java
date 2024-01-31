@@ -1,6 +1,5 @@
 package com.risheek.stou.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ public class UserService {
 	private final RoleRepository roleRepository;
 	private BCryptPasswordEncoder bCrypt;
 	
-	@Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -25,7 +23,8 @@ public class UserService {
     }
 	
 	public User createUser(User user) {
-		Role role = roleRepository.getById(user.getRole().getRoleId());
+		if(userExists(user.getEmail(), user.getRole().getRoleId())) return null;
+		Role role = roleRepository.getReferenceById(user.getRole().getRoleId());
 		user.setRole(role);
 		BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 		user.setPassword(bCrypt.encode(user.getPassword()));
@@ -33,14 +32,29 @@ public class UserService {
 	}
 	
 	public boolean authenticateUser(User user) {
-		UserKey userKey = new UserKey(user.getEmail(), roleRepository.getById(user.getRole().getRoleId()));
-		User dbUser = userRepository.getById(userKey);
-		return this.bCrypt.matches(user.getPassword(), dbUser.getPassword());
+		if(userExists(user.getEmail(), user.getRole().getRoleId())) {
+			UserKey userKey = new UserKey(user.getEmail(), roleRepository.getReferenceById(user.getRole().getRoleId()));
+			User dbUser = null;
+			dbUser = userRepository.getReferenceById(userKey);
+			if(this.bCrypt.matches(user.getPassword(), dbUser.getPassword())) {
+				System.out.println("Authentication Successful " + dbUser);
+				return true;
+			}
+		}
+		System.out.println("Authentication Failed");
+		return false;
+	}
+	
+	public boolean userExists(String email, int roleId) {
+		UserKey userKey = new UserKey(email, roleRepository.getReferenceById(roleId));
+		System.out.println("userExists called with key: " + userKey);
+		return userRepository.existsById(userKey);
 	}
 	
 	public User getUser(String email, int roleId) {
-		UserKey userKey = new UserKey(email, roleRepository.getById(roleId));
-		User user = userRepository.getById(userKey);
+		if(!userExists(email, roleId)) return null;
+		UserKey userKey = new UserKey(email, roleRepository.getReferenceById(roleId));
+		User user = userRepository.getReferenceById(userKey);
 		user.setPassword("");
 		return user;
 	}
