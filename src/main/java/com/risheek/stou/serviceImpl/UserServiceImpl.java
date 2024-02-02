@@ -1,5 +1,6 @@
 package com.risheek.stou.serviceImpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +11,14 @@ import com.risheek.stou.repository.RoleRepository;
 import com.risheek.stou.repository.UserRepository;
 import com.risheek.stou.service.UserService;
 
-@Service
 public class UserServiceImpl implements UserService {
+	@Autowired
 	private final UserRepository userRepository;
+	@Autowired
 	private final RoleRepository roleRepository;
 	private BCryptPasswordEncoder bCrypt;
-	
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+
+	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
     	super();
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
