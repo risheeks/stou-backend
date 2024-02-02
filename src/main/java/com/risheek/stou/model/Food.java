@@ -1,29 +1,35 @@
 package com.risheek.stou.model;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "food")
 public class Food {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "food_id")
-	String foodId;
+	Integer foodId;
 	String picture;
+	@NonNull
 	@Column(name = "cook_email")
 	String cookEmail;
+	@NonNull
 	String title;
 	String description;
 	String cuisine;
+	@NonNull
 	double price;
 	int calories;
+	@NonNull
 	boolean valid;
 	
 	public Food() {
 		super();
 	}
 
-	public Food(String foodId, String picture, String cookEmail, String title, String description, String cuisine,
+	public Food(Integer foodId, String picture, String cookEmail, String title, String description, String cuisine,
 			double price, int calories, boolean valid) {
 		super();
 		this.foodId = foodId;
@@ -37,11 +43,11 @@ public class Food {
 		this.valid = valid;
 	}
 
-	public String getFoodId() {
+	public Integer getFoodId() {
 		return foodId;
 	}
 
-	public void setFoodId(String foodId) {
+	public void setFoodId(Integer foodId) {
 		this.foodId = foodId;
 	}
 
@@ -107,6 +113,13 @@ public class Food {
 
 	public void setValid(boolean valid) {
 		this.valid = valid;
+	}
+
+	@Override
+	public String toString() {
+		return "Food [foodId=" + foodId + ", picture=" + picture + ", cookEmail=" + cookEmail + ", title=" + title
+				+ ", description=" + description + ", cuisine=" + cuisine + ", price=" + price + ", calories="
+				+ calories + ", valid=" + valid + "]";
 	}
 	
 }
