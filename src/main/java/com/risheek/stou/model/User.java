@@ -40,7 +40,7 @@ public class User {
 	@Column(name = "last_name")
 	String lastName;
 	String password;
-	int location;
+	String address;
 	double rating;
 	@Column(name = "num_ratings")
 	int numRatings;
@@ -64,7 +64,7 @@ public class User {
 	}
 	
 	public User(String email, Role role, String picture, String firstName, String lastName, String password,
-			int location, double rating, int numRatings, String aboutMe, boolean banned, int numViews,
+			String address, double rating, int numRatings, String aboutMe, boolean banned, int numViews,
 			Timestamp created, Timestamp updated) {
 		super();
 		this.email = email;
@@ -73,7 +73,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		this.location = location;
+		this.address = address;
 		this.rating = rating;
 		this.numRatings = numRatings;
 		this.aboutMe = aboutMe;
@@ -118,11 +118,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getLocation() {
-		return location;
+	public String getAddress() {
+		return address;
 	}
-	public void setLocation(int location) {
-		this.location = location;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public double getRating() {
 		return rating;
@@ -169,7 +169,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [email=" + email + ", role=" + role + ", picture=" + picture + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", password=" + password + ", location=" + location + ", rating=" + rating
+				+ ", lastName=" + lastName + ", password=" + password + ", address=" + address + ", rating=" + rating
 				+ ", numRatings=" + numRatings + ", aboutMe=" + aboutMe + ", banned=" + banned + ", numViews="
 				+ numViews + ", created=" + created + ", updated=" + updated + "]";
 	}
