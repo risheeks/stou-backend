@@ -3,6 +3,7 @@ package com.risheek.stou.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.risheek.stou.model.Food;
@@ -11,9 +12,9 @@ import com.risheek.stou.service.FoodService;
 
 @Service
 public class FoodServiceImpl implements FoodService {
-
+	@Autowired
 	private final FoodRepository foodRepository;
-	
+
 	public FoodServiceImpl(FoodRepository foodRepository) {
 		super();
 		this.foodRepository = foodRepository;
