@@ -47,7 +47,7 @@ public class UserService {
 	
 	public boolean userExists(String email, int roleId) {
 		UserKey userKey = new UserKey(email, roleRepository.getReferenceById(roleId));
-		System.out.println("userExists called with key: " + userKey);
+//		System.out.println("userExists called with key: " + userKey);
 		return userRepository.existsById(userKey);
 	}
 	
