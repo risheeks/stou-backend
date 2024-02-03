@@ -34,7 +34,7 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public List<Food> getFoodsByCook(String cookEmail) {
+	public List<Food> getFoodsByCookEmail(String cookEmail) {
 		return this.foodRepository.getFoodByCookEmail(cookEmail);
 	}
 

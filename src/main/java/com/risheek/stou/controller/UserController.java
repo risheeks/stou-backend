@@ -24,7 +24,7 @@ public class UserController {
 	
 	@PostMapping
 	public User createUser(@RequestBody User user) {
-		System.out.println(user);
+		System.out.println("Register User: " + user);
 		return userService.createUser(user);
 	}
 	
@@ -36,6 +36,7 @@ public class UserController {
 	
 	@GetMapping("/{email}/{role}")
 	public User getUserByEmailAndRole(@PathVariable String email, @PathVariable Integer role) {
+		System.out.println("Get by email and role: Email: " + email + "Role: " + role);
 		return userService.getUser(email, role);
 	}
 }

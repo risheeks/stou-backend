@@ -14,7 +14,7 @@ public interface FoodService {
 	
 	public Optional<Food> getFoodById(Integer foodId);
 	
-	public List<Food> getFoodsByCook(String cookEmail);
+	public List<Food> getFoodsByCookEmail(String cookEmail);
 	
 	public Food createFood(Food food);
 	

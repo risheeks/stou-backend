@@ -3,7 +3,6 @@ package com.risheek.stou.controller;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +35,14 @@ public class FoodController {
 		return this.foodService.getFoodById(foodId);
 	}
 	
+	@GetMapping("/email/{cookEmail}")
+	public List<Food> getFoodByCookEmail(@PathVariable String cookEmail) {
+		return this.foodService.getFoodsByCookEmail(cookEmail);
+	}
+	
 	@PostMapping()
 	public Food createFood(@RequestBody Food food) {
+		System.out.println(food);
 		return this.foodService.createFood(food);
 	}
 	

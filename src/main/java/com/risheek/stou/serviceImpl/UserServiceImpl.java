@@ -11,6 +11,7 @@ import com.risheek.stou.repository.RoleRepository;
 import com.risheek.stou.repository.UserRepository;
 import com.risheek.stou.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private final UserRepository userRepository;
