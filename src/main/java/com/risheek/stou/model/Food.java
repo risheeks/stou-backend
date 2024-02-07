@@ -11,7 +11,7 @@ public class Food {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "food_id")
 	Integer foodId;
-	String picture;
+	String picture; 
 	@NonNull
 	@Column(name = "cook_email")
 	String cookEmail;
