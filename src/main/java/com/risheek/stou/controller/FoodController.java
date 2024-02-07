@@ -56,7 +56,7 @@ public class FoodController {
 		if(this.foodService.deleteFood(foodId))
 			return new ResponseEntity<>(HttpStatus.OK);
 		else 
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		
 	}
 }
