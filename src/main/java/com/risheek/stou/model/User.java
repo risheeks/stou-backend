@@ -41,14 +41,14 @@ public class User {
 	String lastName;
 	String password;
 	String address;
-	double rating;
+	Double rating;
 	@Column(name = "num_ratings")
-	int numRatings;
+	Integer numRatings;
 	@Column(name = "about_me")
 	String aboutMe;
-	boolean banned;
+	Boolean banned;
 	@Column(name = "num_views")
-	int numViews;
+	Integer numViews;
 	@CreationTimestamp(source = SourceType.DB)
 	Timestamp created;
 	@UpdateTimestamp(source = SourceType.DB)

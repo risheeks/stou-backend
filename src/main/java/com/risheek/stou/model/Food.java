@@ -13,17 +13,17 @@ public class Food {
 	Integer foodId;
 	String picture; 
 	@NonNull
-	@Column(name = "cook_email")
+	@Column(name = "cook_email")	
 	String cookEmail;
 	@NonNull
 	String title;
 	String description;
 	String cuisine;
 	@NonNull
-	double price;
-	int calories;
+	Double price;
+	Integer calories;
 	@NonNull
-	boolean valid;
+	Boolean valid;
 	
 	public Food() {
 		super();
