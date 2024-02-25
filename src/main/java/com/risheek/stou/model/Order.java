@@ -11,7 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -40,8 +40,8 @@ public class Order {
 	@Enumerated(EnumType.STRING)
 	@Column(name="order_status")
 	OrderStatus orderStatus;
-	@OneToMany
-    List<OrderFood> lineItems;
+	@ManyToMany
+    List<Food> food;
 	
 	public Order() {
 		super();
@@ -96,10 +96,18 @@ public class Order {
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
+	
+	public List<Food> getItems() {
+		return food;
+	}
+
+	public void setItems(List<Food> items) {
+		this.food = items;
+	}
 
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", cookEmail=" + cookEmail + ", customerEmail=" + customerEmail
-				+ ", deliveryAddress=" + deliveryAddress + ", orderStatus=" + orderStatus + "]";
+				+ ", deliveryAddress=" + deliveryAddress + ", orderStatus=" + orderStatus + ", items=" + food + "]";
 	}
 }
