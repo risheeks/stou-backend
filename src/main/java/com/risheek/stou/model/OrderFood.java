@@ -18,7 +18,7 @@ public class OrderFood {
 	Integer orderFoodId;
 	@NonNull
 	@Column(name = "order_id")
-	Integer OrderId;
+	Integer orderId;
 	@NonNull
 	@Column(name = "food_id")
 	Integer foodId;
@@ -33,7 +33,7 @@ public class OrderFood {
 			@NonNull Integer quantity) {
 		super();
 		this.orderFoodId = orderFoodId;
-		OrderId = orderId;
+		this.orderId = orderId;
 		this.foodId = foodId;
 		this.quantity = quantity;
 	}
@@ -47,11 +47,11 @@ public class OrderFood {
 	}
 
 	public Integer getOrderId() {
-		return OrderId;
+		return orderId;
 	}
 
 	public void setOrderId(Integer orderId) {
-		OrderId = orderId;
+		this.orderId = orderId;
 	}
 
 	public Integer getFoodId() {
@@ -72,7 +72,7 @@ public class OrderFood {
 
 	@Override
 	public String toString() {
-		return "OrderFood [orderFoodId=" + orderFoodId + ", OrderId=" + OrderId + ", foodId=" + foodId + ", quantity="
+		return "OrderFood [orderFoodId=" + orderFoodId + ", OrderId=" + orderId + ", foodId=" + foodId + ", quantity="
 				+ quantity + "]";
 	}
 }

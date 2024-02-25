@@ -3,6 +3,7 @@ package com.risheek.stou.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +21,7 @@ import com.risheek.stou.service.OrderService;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-	
+	@Autowired
 	private final OrderService orderService;
 	
     public OrderController(OrderService orderService) {
@@ -29,6 +30,8 @@ public class OrderController {
 	
 	@GetMapping
     public List<Order> getAllOrders() {
+		System.out.println("getAllOrders called");
+
         return orderService.getAllOrders();
     }
 	
