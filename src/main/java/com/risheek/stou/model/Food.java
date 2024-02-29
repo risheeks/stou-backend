@@ -24,14 +24,13 @@ public class Food {
 	Integer calories;
 	@NonNull
 	Boolean valid;
-	Integer quatity = 1;
 	
 	public Food() {
 		super();
 	}
 
 	public Food(Integer foodId, String picture, String cookEmail, String title, String description, String cuisine,
-			double price, int calories, boolean valid, int quantity) {
+			double price, int calories, boolean valid) {
 		super();
 		this.foodId = foodId;
 		this.picture = picture;
@@ -42,7 +41,6 @@ public class Food {
 		this.price = price;
 		this.calories = calories;
 		this.valid = valid;
-		this.quatity = quantity;
 	}
 
 	public Integer getFoodId() {
@@ -124,14 +122,6 @@ public class Food {
 
 	public void setValid(Boolean valid) {
 		this.valid = valid;
-	}
-
-	public Integer getQuatity() {
-		return quatity;
-	}
-
-	public void setQuatity(Integer quatity) {
-		this.quatity = quatity;
 	}
 
 	public void setPrice(Double price) {
