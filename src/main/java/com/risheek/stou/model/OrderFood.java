@@ -16,9 +16,9 @@ public class OrderFood {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_food_id")
 	Integer orderFoodId;
-	@NonNull
-	@Column(name = "order_id")
-	Integer orderId;
+//	@NonNull
+//	@Column(name = "order_id")
+//	Integer orderId;
 	@NonNull
 	@Column(name = "food_id")
 	Integer foodId;
@@ -29,11 +29,10 @@ public class OrderFood {
 		super();
 	}
 
-	public OrderFood(Integer orderFoodId, @NonNull Integer orderId, @NonNull Integer foodId,
-			@NonNull Integer quantity) {
+	public OrderFood(Integer orderFoodId, Integer foodId, Integer quantity) {
 		super();
 		this.orderFoodId = orderFoodId;
-		this.orderId = orderId;
+//		this.orderId = orderId;
 		this.foodId = foodId;
 		this.quantity = quantity;
 	}
@@ -46,13 +45,13 @@ public class OrderFood {
 		this.orderFoodId = orderFoodId;
 	}
 
-	public Integer getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
+//	public Integer getOrderId() {
+//		return orderId;
+//	}
+//
+//	public void setOrderId(Integer orderId) {
+//		this.orderId = orderId;
+//	}
 
 	public Integer getFoodId() {
 		return foodId;
@@ -72,7 +71,7 @@ public class OrderFood {
 
 	@Override
 	public String toString() {
-		return "OrderFood [orderFoodId=" + orderFoodId + ", OrderId=" + orderId + ", foodId=" + foodId + ", quantity="
+		return "OrderFood [orderFoodId=" + orderFoodId + ", foodId=" + foodId + ", quantity="
 				+ quantity + "]";
 	}
 }

@@ -41,20 +41,21 @@ public class Order {
 	@Column(name="order_status")
 	OrderStatus orderStatus;
 	@ManyToMany
-    List<Food> food;
+    List<OrderFood> foods;
 	
 	public Order() {
 		super();
 	}
 
 	public Order(Integer orderId, @NonNull String cookEmail, @NonNull String customerEmail, String deliveryAddress,
-			OrderStatus orderStatus) {
+			OrderStatus orderStatus, List<OrderFood> foods) {
 		super();
 		this.orderId = orderId;
 		this.cookEmail = cookEmail;
 		this.customerEmail = customerEmail;
 		this.deliveryAddress = deliveryAddress;
 		this.orderStatus = orderStatus;
+		this.foods = foods;
 	}
 
 	public Integer getOrderId() {
@@ -97,17 +98,17 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 	
-	public List<Food> getItems() {
-		return food;
+	public List<OrderFood> getFoods() {
+		return foods;
 	}
 
-	public void setItems(List<Food> items) {
-		this.food = items;
+	public void setFoods(List<OrderFood> foods) {
+		this.foods = foods;
 	}
 
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", cookEmail=" + cookEmail + ", customerEmail=" + customerEmail
-				+ ", deliveryAddress=" + deliveryAddress + ", orderStatus=" + orderStatus + ", items=" + food + "]";
+				+ ", deliveryAddress=" + deliveryAddress + ", orderStatus=" + orderStatus + ", foods=" + foods + "]";
 	}
 }
